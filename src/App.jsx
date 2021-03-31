@@ -20,14 +20,15 @@ class App extends Component {
       getArt (){
         this.setState({ loading: true }, () => {
           // Send the request  
-          axios.get('https://api.harvardartmuseums.org/object?apikey=8c76c33c-bdea-47fe-bac3-662ac7f085cc')  
+          axios.get('https://api.harvardartmuseums.org/object?apikey=8c76c33c-bdea-47fe-bac3-662ac7f085cc&size=23654')  
             // Extract the DATA from the received response  
             .then(response => response.data)  
             // Use this data to update the state  
             .then(data => {  
+              console.log(data.records[0])
               this.setState({ 
                 loading: false, 
-                art: data.records[0]  
+                art: data.records[11]  
               });  
           });  
         }
