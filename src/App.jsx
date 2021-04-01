@@ -1,49 +1,30 @@
-import React, { Component } from 'react'
-import './App.css';
-import axios from 'axios';
-import DisplayArt from './components/DisplayArt'
-import LoadingSpinner from './components/LoadingSpinner';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      art: null,
-      loading: false
-    }
-    this.getArt = this.getArt.bind(this);
-  }
-
-  componentDidMount() {
-    this.getArt()
-      };
-      getArt (){
-        this.setState({ loading: true }, () => {
-          // Send the request  
-          axios.get('https://api.harvardartmuseums.org/object?apikey=8c76c33c-bdea-47fe-bac3-662ac7f085cc&size=23654')  
-            // Extract the DATA from the received response  
-            .then(response => response.data)  
-            // Use this data to update the state  
-            .then(data => {  
-              console.log(data.records[0])
-              this.setState({ 
-                loading: false, 
-                art: data.records[11]  
-              });  
-          });  
-        }
-          )
-      }
-
-  render() {
-    const { art, loading } = this.state;
+function App() {
   return (
-    <div className="App">
-      {loading || !art ? <LoadingSpinner /> : <DisplayArt art={art}/>}
-        <button type="button" onClick={this.getArt}>Get art</button>     
-    </div>
-  );
-}
+    <Router>
+      <div>
+        <Navbar />
+        <Switch>
+        <Route path="/login">
+            <Login />
+        </Route>
+        <Route path="/archive">
+            <Archive />
+          </Route>
+        <Route path="/about">
+            <About />
+        </Route>
+        <Route path="/">
+            <Home />
+        </Route>
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
 export default App;
