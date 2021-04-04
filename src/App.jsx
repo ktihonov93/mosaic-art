@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MainNavbar from "./components/MainNavbar";
 import Home from "./components/Home";
-import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Archive from "./components/Archive";
+import About from "./components/About";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Navbar />
+      <div>        
+        <MainNavbar />
         <Switch>
         <Route path="/login">
             <Login />

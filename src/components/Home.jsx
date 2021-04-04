@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DisplayArt from "./components/DisplayArt";
-import LoadingSpinner from "./components/LoadingSpinner";
+import DisplayArt from "./DisplayArt";
+import LoadingSpinner from "./LoadingSpinner";
 
-export default function Home() {
+function Home() {
     const [art, setArt] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +17,6 @@ export default function Home() {
         setArt(
           res.data.records[Math.floor(Math.random() * res.data.records.length)]
         );
-        console.log(res.data.records.length);
       });
     setLoading(true);
     // Use this data to update the state
