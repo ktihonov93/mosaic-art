@@ -1,19 +1,25 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ArchiveNavbar from './ArchiveNavbar'
+import Artists from './Artists'
+import Works from './Works'
 
 export default function Archive() {
     return (
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/archive/artist">Artist</Link>
-                    </li>
-                    <li>
-                        <Link to="/archive/work">Work</Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <Router>
+            <div>
+                <ArchiveNavbar />
+                <Switch>
+                    <Route exact path="/archive/artists">
+                        <Artists />
+                    </Route>
+                    <Route path="/archive/works">
+                        <Works />
+                    </Route>
+                </Switch>
+            </div>
+
+        </Router>
+
     )
 }

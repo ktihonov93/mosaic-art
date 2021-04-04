@@ -13,7 +13,7 @@ export default function MainNavbar() {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/archive">Archive</Link>
+              <Link to="/archive/artists">Archive</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
