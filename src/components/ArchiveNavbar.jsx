@@ -10,7 +10,7 @@ export default function ArchiveNavbar() {
                         <Link to="/archive/artists">Artists</Link>
                     </li>
                     <li>
-                        <Link to="/archive/works">Works</Link>
+                        <Link to="/archive/artworks">Artworks</Link>
                     </li>
                 </ul>
             </nav>

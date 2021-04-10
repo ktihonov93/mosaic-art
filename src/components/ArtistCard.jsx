@@ -11,8 +11,8 @@ export default function ArtistCard({ artist }) {
             : "unknown"}
         </div>
         <div>
-          {artist.birth_date ? artist.birth_date : "unknown"} -{" "}
-          {artist.death_date ? artist.death_date : "unknown"}
+          {artist.birth_date ? artist.birth_date : "?"} -{" "}
+          {artist.death_date ? artist.death_date : "?"}
         </div>
       </div>
     </Link>

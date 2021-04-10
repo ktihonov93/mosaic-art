@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
-const ItemDetails = (props) => {
+const AristDetails = (props) => {
   const artistID = props.match.params.id;
   console.log(artistID);
   const [artist, setArtist] = useState(null);
@@ -63,4 +63,4 @@ const ItemDetails = (props) => {
   );
 };
 
-export default ItemDetails;
+export default AristDetails;

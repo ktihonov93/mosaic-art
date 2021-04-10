@@ -1,9 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ArchiveNavbar from './ArchiveNavbar'
-import ItemList from './ItemList'
-import ItemDetails from "./ItemDetails";
-import Works from './Works'
+import ArtistList from './ArtistList'
+import ArtistDetails from "./ArtistDetails";
+import ArtworkList from './ArtworkList'
+//import ArtworkDetails from './ArtworkDetails'
 
 export default function Archive() {
     return (
@@ -12,12 +13,12 @@ export default function Archive() {
                 <ArchiveNavbar />
                 <Switch>
                     <Route exact path="/archive/artists">
-                        <ItemList />
+                        <ArtistList />
                     </Route>
-                    <Route path="/archive/works">
-                        <Works />
+                    <Route path="/archive/artworks">
+                        <ArtworkList />
                     </Route>
-                    <Route path="/archive/artists/:id" component={ItemDetails} />
+                    <Route path="/archive/artists/:id" component={ArtistDetails} />
                 </Switch>
             </div>
 

@@ -3,19 +3,18 @@ import axios from "axios";
 import SearchPlugin from "./SearchPlugin";
 //import Item from "./components/Item";
 import LoadingSpinner from "./LoadingSpinner";
-import ArtistCard from "./ArtistCard";
+import ArtworkCard from "./ArtworkCard";
 
-export default function ItemsList() {
-  //const [items, setItems] = useState(data.items);
-  const [artist, setArtist] = useState(null);
+export default function ArtworkList() {
+    const [artwork, setArtwork] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const getList = async () => {
     await axios
-      .get("https://api.artic.edu/api/v1/artists")
+      .get("https://api.artic.edu/api/v1/artworks")
       // Extract the DATA from the received response
       .then((res) => {
-        setArtist(res.data.data);
+        setArtwork(res.data.data);
       });
     setLoading(true);
     // Use this data to update the state
@@ -26,23 +25,22 @@ export default function ItemsList() {
   }, []);
 
   const filterList = (text) => {
-    let filteredList = artist.filter(function (item) {
+    let filteredList = artwork.filter(function (item) {
       return item.title.toLowerCase().search(text.toLowerCase()) !== -1;
     });
-    setArtist(filteredList);
+    setArtwork(filteredList);
   };
-
-  return (
-    <div>
-      <h2>Artists</h2>
-      <SearchPlugin filter={filterList} />
+    return (
+        <div>
+            <h2>Artworks</h2>
+            <SearchPlugin filter={filterList} />
       <ul>
         {loading ? (
-          artist.map((artist) => <ArtistCard key={artist.id} artist={artist} />)
+          artwork.map((artwork) => <ArtworkCard key={artwork.id} artwork={artwork} />)
         ) : (
           <LoadingSpinner />
         )}
       </ul>
-    </div>
-  );
+        </div>
+    )
 }
