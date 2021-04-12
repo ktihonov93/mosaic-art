@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchPlugin from "./SearchPlugin";
-//import Item from "./components/Item";
 import LoadingSpinner from "./LoadingSpinner";
 import ArtistCard from "./ArtistCard";
 
 export default function ArtistList() {
-  //const [items, setItems] = useState(data.items);
   const [artist, setArtist] = useState(null);
   const [loading, setLoading] = useState(false);
 

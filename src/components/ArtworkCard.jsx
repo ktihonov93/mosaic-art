@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ArtworkCard({ artwork }) {
@@ -10,9 +9,7 @@ export default function ArtworkCard({ artwork }) {
       <div>
         <img src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg
       `} alt={artwork.title && artwork.title != null && artwork.title !== undefined
-              ? artwork.title : "unknown"}/>
-          {artwork.date_display && artwork.date_display != null && artwork.date_display !== undefined
-            ? ", " + artwork.date_display : ""}
+              ? artwork.title : "unknown"}/>          
         </div>
         <div>
           {artwork.title && artwork.title != null && artwork.title !== undefined
