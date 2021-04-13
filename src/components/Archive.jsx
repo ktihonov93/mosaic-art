@@ -15,7 +15,7 @@ export default function Archive() {
                     <Route exact path="/archive/artists">
                         <ArtistList />
                     </Route>
-                    <Route path="/archive/artworks">
+                    <Route exact path="/archive/artworks">
                         <ArtworkList />
                     </Route>
                     <Route path="/archive/artists/:id" component={ArtistDetails} />
