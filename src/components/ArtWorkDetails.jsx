@@ -10,7 +10,7 @@ export default function ArtWorkDetails(props) {
     const [loading, setLoading] = useState(false);
     const getArtwork = async () => {
         await axios
-            .get(`https://api.artic.edu/api/v1/artworks/${artWorkID}`)
+            .get(`https://api.artic.edu/api/v1/artworks/16568`)
             // Extract the DATA from the received response
             .then((res) => {
                 setArtwork(res.data.data);
@@ -22,14 +22,14 @@ export default function ArtWorkDetails(props) {
         // Use this data to update the state
     }, [artWorkID]);
 
-    const getDescription = async () => {
-        await axios
+    const getDescription = () => {
+         axios
             .get(`https://api.artic.edu/api/v1/artworks/${artWorkID}/manifest.json`)
             // Extract the DATA from the received response
             .then((res) => {
                 setDescription(res.data.description[0].value);
             });
-        setLoading(true);
+       // setLoading(true);
     };
     useEffect(() => {
         getDescription();
@@ -41,9 +41,9 @@ export default function ArtWorkDetails(props) {
             {loading ? (
                 <div>
                     <div>
-        <img src={artwork!=null && artwork.image_id!=null && artwork.image_id !== undefined && `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg
+                    <img src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg
       `} alt={artwork.title && artwork.title != null && artwork.title !== undefined
-              ? artwork.title : "unknown"}/>          
+              ? artwork.title : "unknown"}/>                      
         </div>
         <div>
           {artwork.title && artwork.title != null && artwork.title !== undefined
@@ -121,7 +121,7 @@ export default function ArtWorkDetails(props) {
           )}
         </div>
         <p>Multimedia</p>
-        <a name="идентификатор" href={`https://www.artic.edu/assets/${artwork.sound_ids[0]}`}>{`https://api.artic.edu/api/v1/sounds/${artwork.sound_ids[0]}/`.data.title}</a>
+        <a name="идентификатор" href={`https://www.artic.edu/assets/${artwork.sound_ids[0]}`}>audio</a>
                 </div>
             ) : (
                 <LoadingSpinner />
