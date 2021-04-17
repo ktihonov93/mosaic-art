@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ArtworkCard from "./ArtworkCard";
 import LoadingSpinner from "./LoadingSpinner";
 const ArtistDetails = (props) => {
   const artistID = props.match.params.id;
-  console.log(artistID);
+  const artworkID = props.match.params.artwork_ids;
+  console.log(artworkID);
   const [artist, setArtist] = useState(null);
+  const [artwork, setArtwork] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const getArtist = async () => {
@@ -24,6 +27,21 @@ const ArtistDetails = (props) => {
   //console.log(d1);
   //d1.insertAdjacentHTML("beforeend", artist.description);
   //console.log(artist.description);
+
+  const getList = () => {
+    axios
+      .get(`https://api.artic.edu/api/v1/artworks/${artworkID}`)
+      // Extract the DATA from the received response
+      .then((res) => {
+        setArtwork(res.data.data);
+      });
+    // Use this data to update the state
+  };
+
+  useEffect(() => {
+    getList();
+  }, [artworkID]);
+
   return (
     <div id="ItemDetails">
       {loading ? (
@@ -61,6 +79,7 @@ const ArtistDetails = (props) => {
               }}
             ></p>
           )}
+          {artwork != null && artwork.map((artwork) => <ArtworkCard key={artwork.id} artwork={artwork} />)}
         </div>
       ) : (
         <LoadingSpinner />
