@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
+import { Link } from "react-router-dom";
 
 export default function ArtWorkDetails(props) {
     const artWorkID = props.match.params.id;
@@ -10,7 +11,7 @@ export default function ArtWorkDetails(props) {
     const [loading, setLoading] = useState(false);
     const getArtwork = async () => {
         await axios
-            .get(`https://api.artic.edu/api/v1/artworks/16568`)
+            .get(`https://api.artic.edu/api/v1/artworks/${artWorkID}`)
             // Extract the DATA from the received response
             .then((res) => {
                 setArtwork(res.data.data);
@@ -62,7 +63,7 @@ export default function ArtWorkDetails(props) {
         {description}
         <div>
           {artwork.artist_title && artwork.artist_title != null && artwork.artist_title !== undefined
-            && "Artist "+artwork.artist_title}
+            && <div>Artist <Link to={{ pathname: `/archive/artists/${artwork.artist_id}` }}>{artwork.artist_title}</Link> </div>}
         </div>
         <div>
           {artwork.title && artwork.title != null && artwork.title !== undefined
@@ -96,11 +97,13 @@ export default function ArtWorkDetails(props) {
           {artwork.main_reference_number && artwork.main_reference_number != null && artwork.main_reference_number !== undefined
             && "Reference Number "+artwork.main_reference_number}
         </div>
+        {artwork.publication_history &&
         <div>
           {artwork.publication_history && artwork.publication_history != null && artwork.publication_history !== undefined
             && "Publication history "+artwork.publication_history}
-        </div>
-        <div>
+        </div>}
+        {artwork.exhibition_history &&
+        <div>          
         <p>Exhibition history</p>
             {artwork != null && artwork.exhibition_history && (
             <p
@@ -109,7 +112,8 @@ export default function ArtWorkDetails(props) {
               }}
             ></p>
           )}
-        </div>
+        </div>}
+        {artwork.provenance_text &&
         <div>
             <p>Provenance</p>
             {artwork != null && artwork.provenance_text && (
@@ -119,9 +123,12 @@ export default function ArtWorkDetails(props) {
               }}
             ></p>
           )}
-        </div>
+        </div>}
+        {artwork.sound_ids[0] && (
+          <div>
         <p>Multimedia</p>
-        <a name="идентификатор" href={`https://www.artic.edu/assets/${artwork.sound_ids[0]}`}>audio</a>
+         <a href={`https://www.artic.edu/assets/${artwork.sound_ids[0]}`}>audio</a>
+         </div>)}
                 </div>
             ) : (
                 <LoadingSpinner />

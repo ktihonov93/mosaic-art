@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import RelatedArtworkCards from "./RelatedArtworkCards";
 import LoadingSpinner from "./LoadingSpinner";
 const ArtistDetails = (props) => {
   const artistID = props.match.params.id;
-  console.log(artistID);
   const [artist, setArtist] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -20,10 +20,7 @@ const ArtistDetails = (props) => {
     getArtist();
     // Use this data to update the state
   }, [artistID]);
-  //let d1 = document.getElementById("ItemDetails");
-  //console.log(d1);
-  //d1.insertAdjacentHTML("beforeend", artist.description);
-  //console.log(artist.description);
+
   return (
     <div id="ItemDetails">
       {loading ? (
@@ -61,6 +58,12 @@ const ArtistDetails = (props) => {
               }}
             ></p>
           )}
+            {artist.artwork_ids.map((artistArtwork) => (
+        <RelatedArtworkCards
+          key={artistArtwork}
+          artistArtwork={artistArtwork}
+        />
+      ))}        
         </div>
       ) : (
         <LoadingSpinner />
