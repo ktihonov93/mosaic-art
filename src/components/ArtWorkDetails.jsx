@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
+import { Link } from "react-router-dom";
 
 export default function ArtWorkDetails(props) {
     const artWorkID = props.match.params.id;
@@ -62,7 +63,7 @@ export default function ArtWorkDetails(props) {
         {description}
         <div>
           {artwork.artist_title && artwork.artist_title != null && artwork.artist_title !== undefined
-            && "Artist "+artwork.artist_title}
+            && <div>Artist <Link to={{ pathname: `/archive/artists/${artwork.artist_id}` }}>{artwork.artist_title}</Link> </div>}
         </div>
         <div>
           {artwork.title && artwork.title != null && artwork.title !== undefined
