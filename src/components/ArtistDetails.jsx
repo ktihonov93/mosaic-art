@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RelatedArtworkCards from "./RelatedArtworkCards";
 import LoadingSpinner from "./LoadingSpinner";
+import './ArtistDetails.css'
+
 const ArtistDetails = (props) => {
   const artistID = props.match.params.id;
   const [artist, setArtist] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  };
 
   const getArtist = async () => {
     await axios
@@ -51,6 +58,9 @@ const ArtistDetails = (props) => {
               artist.death_place &&
               " Place of death " + artist.death_place}
           </p>
+          <div className="favorite" onClick={handleFavoriteClick}>
+          {isFavorite ? "♥️" : "♡"}
+        </div>
           {artist != null && artist.description && (
             <p
               dangerouslySetInnerHTML={{
