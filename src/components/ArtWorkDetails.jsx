@@ -9,6 +9,11 @@ export default function ArtWorkDetails(props) {
     const [artwork, setArtwork] = useState(null);
     const [description, setDescription] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  };
     const getArtwork = async () => {
         await axios
             .get(`https://api.artic.edu/api/v1/artworks/${artWorkID}`)
@@ -59,6 +64,9 @@ export default function ArtWorkDetails(props) {
           {artwork.date_display && artwork.date_display != null && artwork.date_display !== undefined
             ? artwork.date_display
             : "unknown"}
+        </div>
+        <div className="favorite" onClick={handleFavoriteClick}>
+          {isFavorite ? "♥️" : "♡"}
         </div>
         {description}
         <div>
