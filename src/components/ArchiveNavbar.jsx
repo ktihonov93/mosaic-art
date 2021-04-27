@@ -1,20 +1,30 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import "./ArchiveNavbar.scss";
+import "./ArchiveNavbar.css";
 
 export default function ArchiveNavbar() {
-    return (
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/archive/artists">Artists</Link>
-                    </li>
-                    <li>
-                        <Link to="/archive/artworks">Artworks</Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    )
+  return (
+    <div className="ArchiveNavbar">
+      <ul className="ArchiveNavbar-ul">
+        <li className="ArchiveNavbarItems">
+          <Link
+            to="/archive/artists"
+            data-title="Artists"
+            className="ArchiveNavbarLinks"
+          >
+            Artists
+          </Link>
+        </li>
+        <li className="ArchiveNavbarItems">
+          <Link
+            to="/archive/artworks"
+            data-title="Artworks"
+            className="ArchiveNavbarLinks"
+          >
+            Artworks
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
