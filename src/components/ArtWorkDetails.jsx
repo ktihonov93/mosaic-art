@@ -47,20 +47,20 @@ export default function ArtWorkDetails(props) {
             {loading ? (
                 <div>
                     <div>
-                    <img src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg
+                    <img className="artwork-img" src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg
       `} alt={artwork.title && artwork.title != null && artwork.title !== undefined
               ? artwork.title : "unknown"}/>                      
         </div>
-        <div>
+        <div className="artwork-title">
           {artwork.title && artwork.title != null && artwork.title !== undefined
             ? artwork.title : "unknown"}          
         </div>
-        <div>
+        <div className="artwork-artist-title">
           {artwork.artist_title && artwork.artist_title != null && artwork.artist_title !== undefined
             ? artwork.artist_title
             : "unknown"}
         </div>
-        <div>
+        <div className="artwork-date-display">
           {artwork.date_display && artwork.date_display != null && artwork.date_display !== undefined
             ? artwork.date_display
             : "unknown"}
@@ -68,11 +68,13 @@ export default function ArtWorkDetails(props) {
         <div className="favorite" onClick={handleFavoriteClick}>
           {isFavorite ? "♥️" : "♡"}
         </div>
-        {description}
+        <div className="main-text">
         <div>
+        {description}
+        </div>
           {artwork.artist_title && artwork.artist_title != null && artwork.artist_title !== undefined
             && <div>Artist <Link to={{ pathname: `/archive/artists/${artwork.artist_id}` }}>{artwork.artist_title}</Link> </div>}
-        </div>
+       
         <div>
           {artwork.title && artwork.title != null && artwork.title !== undefined
             && "Title "+artwork.title}
@@ -89,10 +91,10 @@ export default function ArtWorkDetails(props) {
           {artwork.medium_display && artwork.medium_display != null && artwork.medium_display !== undefined
             && "Medium "+artwork.medium_display}
         </div>
-        <div>
+        
           {artwork.inscriptions && artwork.inscriptions != null && artwork.inscriptions !== undefined
-            && "Inscriptions "+artwork.inscriptions}
-        </div>
+            && <div>"Inscriptions " {artwork.inscriptions}</div>}
+        
         <div>
           {artwork.dimensions && artwork.dimensions != null && artwork.dimensions !== undefined
             && "Dimensions "+artwork.dimensions}
@@ -137,6 +139,7 @@ export default function ArtWorkDetails(props) {
         <p>Multimedia</p>
          <a href={`https://www.artic.edu/assets/${artwork.sound_ids[0]}`}>audio</a>
          </div>)}
+                </div>
                 </div>
             ) : (
                 <LoadingSpinner />

@@ -1,0 +1,10 @@
+.ArtworkList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .ArtworkList-page {
+    text-align: center;
+  }
+  
