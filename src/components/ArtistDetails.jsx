@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RelatedArtworkCards from "./RelatedArtworkCards";
 import LoadingSpinner from "./LoadingSpinner";
-import './ArtistDetails.css'
+import "./ArtistDetails.css";
 
 const ArtistDetails = (props) => {
   const artistID = props.match.params.id;
@@ -31,8 +31,10 @@ const ArtistDetails = (props) => {
   return (
     <div id="ItemDetails">
       {loading ? (
-        <div>
-          <h2>{artist != null && artist.title != null && artist.title}</h2>
+        <div className="ArtistDetails-main-text">
+          <h2 className="ArtistDetails-artist-title">
+            {artist != null && artist.title != null && artist.title}
+          </h2>
           <p>
             {artist != null &&
               artist.alt_titles &&
@@ -59,8 +61,8 @@ const ArtistDetails = (props) => {
               " Place of death " + artist.death_place}
           </p>
           <div className="favorite" onClick={handleFavoriteClick}>
-          {isFavorite ? "♥️" : "♡"}
-        </div>
+            {isFavorite ? "♥️" : "♡"}
+          </div>
           {artist != null && artist.description && (
             <p
               dangerouslySetInnerHTML={{
@@ -68,12 +70,13 @@ const ArtistDetails = (props) => {
               }}
             ></p>
           )}
-            {artist.artwork_ids.map((artistArtwork) => (
-        <RelatedArtworkCards
-          key={artistArtwork}
-          artistArtwork={artistArtwork}
-        />
-      ))}        
+          <h2 className="ArtistDetails-artworks">Artworks</h2>
+          {artist.artwork_ids.map((artistArtwork) => (
+            <RelatedArtworkCards
+              key={artistArtwork}
+              artistArtwork={artistArtwork}
+            />
+          ))}
         </div>
       ) : (
         <LoadingSpinner />
