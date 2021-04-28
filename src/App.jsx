@@ -6,12 +6,14 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Archive from "./components/Archive";
 import About from "./components/About";
+import Footer from "./components/Footer"
 
 function App() {
   return (
     <Router>
       <div>        
         <MainNavbar />
+        
         <Switch>
         <Route path="/login">
             <Login />
@@ -27,6 +29,7 @@ function App() {
         </Route>
         
         </Switch>
+        <Footer/>
       </div>
     </Router>
   )
