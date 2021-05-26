@@ -1,7 +1,13 @@
 .footer{
     height: 70px;
     background-color: #374e59;
-    text-align: center;
+    text-align: center;    
+  position: relative;
+  bottom: 0px;
+}
+
+#root{
+  min-height: calc(100vh - 70px);
 }
 
 .footer img{

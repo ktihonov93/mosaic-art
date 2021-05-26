@@ -17,32 +17,31 @@ function Home() {
     setIsFavorite(!isFavorite);
   };
 
-  const getDescription = () => {
-    artwork && console.log("artwork.id 2 " + artwork.id);
-    artwork &&
-      axios
-        .get(
-          `https://api.artic.edu/api/v1/artworks/${artwork.id}/manifest.json`
-        )
+  //const getDescription = async () => {
+    //artwork && console.log("artwork.id 2 " + artwork.id);
+    //artwork &&
+   // await axios
+   //     .get(
+    //      `https://api.artic.edu/api/v1/artworks/${artwork.id}/manifest.json`
+    //    )
         //  Extract the DATA from the received response
-        .then((res) => {
-          setDescription(res.data.description[0].value);
-        });
-  };
+    //    .then((res) => {
+    //      setDescription(res.data.description[0].value);
+     //   });
+  //};
 
   const getArtwork = async () => {
     setRandomPage(Math.floor(Math.random() * 9561));
-    await axios
-      .get(`https://api.artic.edu/api/v1/artworks?page={randomPage}`)
+    let resArtwork = await axios.get(`https://api.artic.edu/api/v1/artworks?page={randomPage}`)
       // Extract the DATA from the received response
-      .then((res) => {
-        const random = Math.floor(Math.random() * res.data.data.length);
-        setArtwork(res.data.data[random]);
-        console.log(random);
-        artwork && console.log(artwork.id);
-      });
-
-    getDescription();
+      
+        const random = Math.floor(Math.random() * resArtwork.data.data.length);
+        let newResArtwork = await resArtwork.data.data[random]
+        setArtwork(newResArtwork);
+          let resDescription = await axios.get(`https://api.artic.edu/api/v1/artworks/${newResArtwork.id}/manifest.json`)
+          let newResDescription = await resDescription.data.description[0].value
+        setDescription(newResDescription);
+    
     setLoading(true);
   };
   useEffect(() => {
@@ -101,7 +100,7 @@ function Home() {
             {isFavorite ? "♥️" : "♡"}
           </div>
           <div className="main-text">
-            <div> {description} </div>
+            <div> {artwork!=null && artwork!==undefined && description} </div>
 
             {artwork.artist_title &&
               artwork.artist_title != null &&
