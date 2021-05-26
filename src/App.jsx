@@ -11,7 +11,7 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <Router>
-      <div>        
+      <div className="content">        
         <MainNavbar />
         
         <Switch>
