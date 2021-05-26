@@ -9,26 +9,10 @@ function Home() {
   const [description, setDescription] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [randomPage, setRandomPage] = useState(null);
-  //const randomPage = Math.floor(Math.random() * 9561);
-  //console.log(randomPage);
 
   const handleFavoriteClick = () => {
     setIsFavorite(!isFavorite);
   };
-
-  //const getDescription = async () => {
-    //artwork && console.log("artwork.id 2 " + artwork.id);
-    //artwork &&
-   // await axios
-   //     .get(
-    //      `https://api.artic.edu/api/v1/artworks/${artwork.id}/manifest.json`
-    //    )
-        //  Extract the DATA from the received response
-    //    .then((res) => {
-    //      setDescription(res.data.description[0].value);
-     //   });
-  //};
 
   const getArtwork = async () => {
     setRandomPage(Math.floor(Math.random() * 9561));
