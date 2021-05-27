@@ -9,17 +9,23 @@ function Home() {
   const [description, setDescription] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [randomPage ,setRandomPage] = useState(null)
 
   const handleFavoriteClick = () => {
     setIsFavorite(!isFavorite);
   };
 
   const getArtwork = async () => {
-    setRandomPage(Math.floor(Math.random() * 9561));
-    let resArtwork = await axios.get(`https://api.artic.edu/api/v1/artworks?page={randomPage}`)
+    let resRandomPage = Math.floor(Math.random() * 419)
+    setRandomPage(resRandomPage);
+    let resArtwork = await axios.get(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
+    
+      while(resArtwork.data.data.length===0){
+        resRandomPage = Math.floor(Math.random() * 419)
+        resArtwork = await axios.get(`https://api.artic.edu/api/v1/artworks?page=${randomPage}`)
+      }    
       // Extract the DATA from the received response
-      
-        const random = Math.floor(Math.random() * resArtwork.data.data.length);
+        let random = Math.floor(Math.random() * resArtwork.data.data.length);
         let newResArtwork = await resArtwork.data.data[random]
         setArtwork(newResArtwork);
           let resDescription = await axios.get(`https://api.artic.edu/api/v1/artworks/${newResArtwork.id}/manifest.json`)
