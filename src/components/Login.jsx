@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Login.css'
 
 export default function Login() {
     const [form, setState] = useState({ name: "", email: "" });
@@ -10,7 +11,7 @@ export default function Login() {
       setState({ ...form, [e.target.name]: e.target.value });
     };
     return (
-      <div className="App">
+      <div className="Login">
         <form onSubmit={handleSubmit}>
           <label>Name</label>
           <br />
