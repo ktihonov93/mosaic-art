@@ -14,7 +14,6 @@ export default function MainNavbar() {
               <Link to="/" className="nav-item">Home</Link>
               <Link to="/login" className="nav-item">Login</Link>
               <Link to="/archive/artists" className="nav-item">Archive</Link>
-            <Link to="/about" className="nav-item">About</Link>
         </nav>
         </div>
         </div>
