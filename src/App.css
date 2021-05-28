@@ -12,7 +12,3 @@
   .LoadingSpinner .magnif {
     z-index: 1000;
   }
-  
-  .content{
-    min-height: calc(100vh - 70px);
-  }
