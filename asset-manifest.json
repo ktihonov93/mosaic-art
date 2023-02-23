@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/mosaic-art/static/css/main.e74fa9cd.css",
+    "main.js": "/mosaic-art/static/js/main.496e0e74.js",
+    "static/media/logoGif.gif": "/mosaic-art/static/media/logoGif.91f6bb55f305d6a01ef6.gif",
+    "static/media/magnif.gif": "/mosaic-art/static/media/magnif.613c334f3fe83bcd8a08.gif",
+    "static/media/logoImg.jpg": "/mosaic-art/static/media/logoImg.ff49cf3372d8b817c822.jpg",
+    "index.html": "/mosaic-art/index.html",
+    "main.e74fa9cd.css.map": "/mosaic-art/static/css/main.e74fa9cd.css.map",
+    "main.496e0e74.js.map": "/mosaic-art/static/js/main.496e0e74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e74fa9cd.css",
+    "static/js/main.496e0e74.js"
+  ]
+}
