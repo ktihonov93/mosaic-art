@@ -1,0 +1,28 @@
+.favorite {
+  cursor: pointer;
+  font-size: 26px;
+  text-align: center;
+}
+
+.ArtistDetails-artworks {
+  width: 90%;
+  margin: 10px 5% 10px 5%;
+  border-top: 0.5px solid #8080808c;
+  padding-top: 25px;
+}
+
+.ArtistDetails-artist-title {
+  width: 90%;
+  margin: 10px 5% 10px 5%;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #8080808c;
+}
+
+.ArtistDetails-main-text p {
+  width: 90%;
+  margin: 10px 5% 10px 5%;
+}
+
+#ItemDetails{
+  margin-bottom: 100px;
+}

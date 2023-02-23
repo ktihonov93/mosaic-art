@@ -1,0 +1,33 @@
+.ArtworkCard img {
+    width: 100%;
+    margin-bottom: -4px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .ArtworkCard {
+    margin: 20px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    transition: box-shadow 0.15s ease-out;
+    border-radius: 10px;
+  }
+  
+  .ArtworkCard:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.39), 0 6px 6px rgba(0, 0, 0, 0.33);
+  }
+  
+  .ArtworkCard-title {
+    color: black;
+  }
+  
+  .ArtworkCard-artist_title {
+    color: #582323;
+    padding: 8px;
+  }
+  
+  .ArtworkCard-description {
+    padding: 8px;
+    background-color: #78bd29ec;
+    border-radius: 0 0 10px 10px;
+  }
+  

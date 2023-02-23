@@ -1,0 +1,27 @@
+.footer {
+  width: 100%;
+  height: 70px;
+  background-color: #374e59;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.footer img {
+  margin-top: 5px;
+  height: 60px;
+}
+
+.footer .logo:last-child {
+  display: none;
+}
+.footer:hover .logo:last-child {
+  display: inline-block;
+}
+.footer:hover .logo:first-child {
+  display: none;
+}
